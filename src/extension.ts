@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import ChatGptViewProvider from './chatgpt-view-provider';
 
-const menuCommands = ["findProblems", "completeCode", "customPrompt1", "adhoc"];
+const menuCommands = ["findVuln", "completeCode", "customPrompt1", "adhoc"];
 
 export async function activate(context: vscode.ExtensionContext) {
 	let adhocCommandPrefix: string = context.globalState.get("chatgpt-adhoc-prompt") || '';
@@ -9,7 +9,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	const provider = new ChatGptViewProvider(context);
 
 	const view = vscode.window.registerWebviewViewProvider(
-		"CodeSecGPT.view",
+		"KPMG-Sec.view",
 		provider,
 		{
 			webviewOptions: {
@@ -18,7 +18,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		}
 	);
 
-	const freeText = vscode.commands.registerCommand("CodeSecGPT.freeText", async () => {
+	const freeText = vscode.commands.registerCommand("KPMG-Sec.freeText", async () => {
 		const value = await vscode.window.showInputBox({
 			prompt: "Ask anything...",
 		});
@@ -28,15 +28,15 @@ export async function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	const resetThread = vscode.commands.registerCommand("CodeSecGPT.clearConversation", async () => {
+	const resetThread = vscode.commands.registerCommand("KPMG-Sec.clearConversation", async () => {
 		provider?.sendMessage({ type: 'clearConversation' }, true);
 	});
 
-	const exportConversation = vscode.commands.registerCommand("CodeSecGPT.exportConversation", async () => {
+	const exportConversation = vscode.commands.registerCommand("KPMG-Sec.exportConversation", async () => {
 		provider?.sendMessage({ type: 'exportConversation' }, true);
 	});
 
-	const clearSession = vscode.commands.registerCommand("CodeSecGPT.clearSession", () => {
+	const clearSession = vscode.commands.registerCommand("KPMG-Sec.clearSession", () => {
 		context.globalState.update("chatgpt-session-token", null);
 		context.globalState.update("chatgpt-clearance-token", null);
 		context.globalState.update("chatgpt-user-agent", null);
@@ -99,7 +99,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	const adhocCommand = vscode.commands.registerCommand("CodeSecGPT.adhoc", async () => {
+	const adhocCommand = vscode.commands.registerCommand("KPMG-Sec.adhoc", async () => {
 		const editor = vscode.window.activeTextEditor;
 
 		if (!editor) {
@@ -133,7 +133,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	const generateCodeCommand = vscode.commands.registerCommand(`CodeSecGPT.generateCode`, () => {
+	const generateCodeCommand = vscode.commands.registerCommand(`KPMG-Sec.generateCode`, () => {
 		const editor = vscode.window.activeTextEditor;
 
 		if (!editor) {
@@ -147,7 +147,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	});
 
 	// Skip AdHoc - as it was registered earlier
-	const registeredCommands = menuCommands.filter(command => command !== "adhoc" && command !== "generateCode").map((command) => vscode.commands.registerCommand(`CodeSecGPT.${command}`, () => {
+	const registeredCommands = menuCommands.filter(command => command !== "adhoc" && command !== "generateCode").map((command) => vscode.commands.registerCommand(`KPMG-Sec.${command}`, () => {
 		const prompt = vscode.workspace.getConfiguration("chatgpt").get<string>(`promptPrefix.${command}`);
 		const editor = vscode.window.activeTextEditor;
 

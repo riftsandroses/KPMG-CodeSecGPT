@@ -75,8 +75,19 @@ export default class ChatGptViewProvider implements vscode.WebviewViewProvider {
 				case 'editCode':
 					const escapedString = (data.value as string).replace(/\$/g, '\\$');;
 					vscode.window.activeTextEditor?.insertSnippet(new vscode.SnippetString(escapedString));
-
-					this.logEvent("code-inserted");
+					const originalString = `${vscode.window.activeTextEditor?.document.getText(vscode.window.activeTextEditor?.selection)}`;
+					const logData =
+						`\n\n------------------------------------------------------------------
+					Original code(User): ${originalString}\n
+					Replaced Code(KPMG-Sec): ${escapedString}\n\n
+					-----------------------------------------------------------------------\n\n`;
+					fs.appendFile('C:\Users\acer\Downloads\logs', logData, (err) => {
+						if (err) {
+							console.error('Error appending to log file:', err);
+						}
+					});
+					vscode.window.showInformationMessage("Replaced!");
+					this.logEvent("code-replaced");
 					break;
 				case 'openNew':
 					const document = await vscode.workspace.openTextDocument({
@@ -111,12 +122,12 @@ export default class ChatGptViewProvider implements vscode.WebviewViewProvider {
 					});
 					break;
 				case 'openSettings':
-					vscode.commands.executeCommand('workbench.action.openSettings', "@ext:YOUR_PUBLISHER_NAME.CodeSecGPT chatgpt.");
+					vscode.commands.executeCommand('workbench.action.openSettings', "@ext:YOUR_PUBLISHER_NAME.KPMG-Sec chatgpt.");
 
 					this.logEvent("settings-opened");
 					break;
 				case 'openSettingsPrompt':
-					vscode.commands.executeCommand('workbench.action.openSettings', "@ext:YOUR_PUBLISHER_NAME.CodeSecGPT promptPrefix");
+					vscode.commands.executeCommand('workbench.action.openSettings', "@ext:YOUR_PUBLISHER_NAME.KPMG-Sec promptPrefix");
 
 					this.logEvent("settings-prompt-opened");
 					break;
@@ -331,7 +342,7 @@ export default class ChatGptViewProvider implements vscode.WebviewViewProvider {
 
 		// If the ChatGPT view is not in focus/visible; focus on it to render Q&A
 		if (this.webView == null) {
-			vscode.commands.executeCommand('CodeSecGPT.view.focus');
+			vscode.commands.executeCommand('KPMG-Sec.view.focus');
 		} else {
 			this.webView?.show?.(true);
 		}
@@ -377,7 +388,7 @@ export default class ChatGptViewProvider implements vscode.WebviewViewProvider {
 
 			if (hasContinuation) {
 				this.response = this.response + " \r\n ```\r\n";
-				vscode.window.showInformationMessage("It looks like CodeSecGPT didn't complete their answer for your coding question. You can ask it to continue and combine the answers.", "Continue and combine answers")
+				vscode.window.showInformationMessage("It looks like KPMG-Sec didn't complete their answer for your coding question. You can ask it to continue and combine the answers.", "Continue and combine answers")
 					.then(async (choice) => {
 						if (choice === "Continue and combine answers") {
 							this.sendApiRequest("Continue", { command: options.command, code: undefined, previousAnswer: this.response });
@@ -388,8 +399,8 @@ export default class ChatGptViewProvider implements vscode.WebviewViewProvider {
 			this.sendMessage({ type: 'addResponse', value: this.response, done: true, id: this.currentMessageId, autoScroll: this.autoScroll, responseInMarkdown });
 
 			if (this.subscribeToResponse) {
-				vscode.window.showInformationMessage("CodeSecGPT responded to your question.", "Open conversation").then(async () => {
-					await vscode.commands.executeCommand('CodeSecGPT.view.focus');
+				vscode.window.showInformationMessage("KPMG-Sec responded to your question.", "Open conversation").then(async () => {
+					await vscode.commands.executeCommand('KPMG-Sec.view.focus');
 				});
 			}
 		} catch (error: any) {
@@ -401,9 +412,9 @@ export default class ChatGptViewProvider implements vscode.WebviewViewProvider {
 			if (error?.response?.status || error?.response?.statusText) {
 				message = `${error?.response?.status || ""} ${error?.response?.statusText || ""}`;
 
-				vscode.window.showErrorMessage("An error occured. If this is due to max_token you could try `CodeSecGPT: Clear Conversation` command and retry sending your prompt.", "Clear conversation and retry").then(async choice => {
+				vscode.window.showErrorMessage("An error occured. If this is due to max_token you could try `KPMG-Sec: Clear Conversation` command and retry sending your prompt.", "Clear conversation and retry").then(async choice => {
 					if (choice === "Clear conversation and retry") {
-						await vscode.commands.executeCommand("CodeSecGPT.clearConversation");
+						await vscode.commands.executeCommand("KPMG-Sec.clearConversation");
 						await delay(250);
 						this.sendApiRequest(prompt, { command: options.command, code: options.code });
 					}
@@ -412,11 +423,11 @@ export default class ChatGptViewProvider implements vscode.WebviewViewProvider {
 				message = `Your method: '${this.loginMethod}' and your model: '${this.model}' may be incompatible or one of your parameters is unknown. Reset your settings to default. (HTTP 400 Bad Request)`;
 
 			} else if (error.statusCode === 401) {
-				message = 'Make sure you are properly signed in. If you are using Browser Auto-login method, make sure the browser is open (You could refresh the browser tab manually if you face any issues, too). If you stored your API key in settings.json, make sure it is accurate. If you stored API key in session, you can reset it with `CodeSecGPT: Reset session` command. (HTTP 401 Unauthorized) Potential reasons: \r\n- 1.Invalid Authentication\r\n- 2.Incorrect API key provided.\r\n- 3.Incorrect Organization provided. \r\n See https://platform.openai.com/docs/guides/error-codes for more details.';
+				message = 'Make sure you are properly signed in. If you are using Browser Auto-login method, make sure the browser is open (You could refresh the browser tab manually if you face any issues, too). If you stored your API key in settings.json, make sure it is accurate. If you stored API key in session, you can reset it with `KPMG-Sec: Reset session` command. (HTTP 401 Unauthorized) Potential reasons: \r\n- 1.Invalid Authentication\r\n- 2.Incorrect API key provided.\r\n- 3.Incorrect Organization provided. \r\n See https://platform.openai.com/docs/guides/error-codes for more details.';
 			} else if (error.statusCode === 403) {
 				message = 'Your token has expired. Please try authenticating again. (HTTP 403 Forbidden)';
 			} else if (error.statusCode === 404) {
-				message = `Your method: '${this.loginMethod}' and your model: '${this.model}' may be incompatible or you may have exhausted your CodeSecGPT subscription allowance. (HTTP 404 Not Found)`;
+				message = `Your method: '${this.loginMethod}' and your model: '${this.model}' may be incompatible or you may have exhausted your KPMG-Sec subscription allowance. (HTTP 404 Not Found)`;
 			} else if (error.statusCode === 429) {
 				message = "Too many requests try again later. (HTTP 429 Too Many Requests) Potential reasons: \r\n 1. You exceeded your current quota, please check your plan and billing details\r\n 2. You are sending requests too quickly \r\n 3. The engine is currently overloaded, please try again later. \r\n See https://platform.openai.com/docs/guides/error-codes for more details.";
 			} else if (error.statusCode === 500) {
@@ -499,7 +510,7 @@ export default class ChatGptViewProvider implements vscode.WebviewViewProvider {
 								</svg>
 								<h2>Features</h2>
 								<ul class="flex flex-col gap-3.5 text-xs">
-									<li class="features-li w-full border border-zinc-700 p-3 rounded-md">Access to your CodeSecGPT conversation history</li>
+									<li class="features-li w-full border border-zinc-700 p-3 rounded-md">Access to your KPMG-Sec conversation history</li>
 									<li class="features-li w-full border border-zinc-700 p-3 rounded-md">Improve your code, add tests & find bugs</li>
 									<li class="features-li w-full border border-zinc-700 p-3 rounded-md">Copy or create new files automatically</li>
 									<li class="features-li w-full border border-zinc-700 p-3 rounded-md">Syntax highlighting with auto language detection</li>

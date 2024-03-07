@@ -258,7 +258,7 @@ export async function browserPostEventStream(
 
             return await pTimeout(responseP, {
                 milliseconds: timeoutMs,
-                message: 'CodeSecGPT timed out waiting for response'
+                message: 'KPMG-Sec timed out waiting for response'
             });
         } else {
             return await responseP;

@@ -1,13 +1,13 @@
 {
-  "name": "CodeSecGPT",
+  "name": "KPMG-Sec",
   "publisher": "YOUR_PUBLISHER_NAME",
-  "displayName": "CodeSecGPT",
-  "icon": "images/ai-logo.jpg",
-  "description": "CodeSecGPT",
+  "displayName": "KPMG-Sec",
+  "icon": "images/KPMG.png",
+  "description": "KPMG-Sec",
   "version": "3.9.7-0",
   "aiKey": "",
   "repository": {
-    "url": "https://github.com/YOUR_PUBLISHER_NAME/CodeSecGPT"
+    "url": "https://github.com/YOUR_PUBLISHER_NAME/KPMG-Sec"
   },
   "engines": {
     "vscode": "^1.73.0"
@@ -42,52 +42,52 @@
     "menus": {
       "editor/context": [
         {
-          "command": "CodeSecGPT.generateCode",
+          "command": "KPMG-Sec.generateCode",
           "group": "chatGpt@1",
           "when": "editorHasSelection && generateCode-enabled"
         },
         {
-          "command": "CodeSecGPT.addTests",
+          "command": "KPMG-Sec.addTests",
           "group": "chatGpt@2",
           "when": "editorHasSelection && addTests-enabled"
         },
         {
-          "command": "CodeSecGPT.findProblems",
+          "command": "KPMG-Sec.findVuln",
           "group": "chatGpt@3",
-          "when": "editorHasSelection && findProblems-enabled"
+          "when": "editorHasSelection && findVuln-enabled"
         },
         {
-          "command": "CodeSecGPT.optimize",
+          "command": "KPMG-Sec.optimize",
           "group": "chatGpt@4",
           "when": "editorHasSelection && optimize-enabled"
         },
         {
-          "command": "CodeSecGPT.explain",
+          "command": "KPMG-Sec.explain",
           "group": "chatGpt@5",
           "when": "editorHasSelection && explain-enabled"
         },
         {
-          "command": "CodeSecGPT.addComments",
+          "command": "KPMG-Sec.addComments",
           "group": "chatGpt@6",
           "when": "editorHasSelection && addComments-enabled"
         },
         {
-          "command": "CodeSecGPT.completeCode",
+          "command": "KPMG-Sec.completeCode",
           "group": "chatGpt@7",
           "when": "editorHasSelection && completeCode-enabled"
         },
         {
-          "command": "CodeSecGPT.adhoc",
+          "command": "KPMG-Sec.adhoc",
           "group": "chatGpt@8",
           "when": "editorHasSelection && adhoc-enabled"
         },
         {
-          "command": "CodeSecGPT.customPrompt1",
+          "command": "KPMG-Sec.customPrompt1",
           "group": "chatGpt@9",
           "when": "editorHasSelection && customPrompt1-enabled"
         },
         {
-          "command": "CodeSecGPT.customPrompt2",
+          "command": "KPMG-Sec.customPrompt2",
           "group": "chatGpt@10",
           "when": "editorHasSelection && customPrompt2-enabled"
         }
@@ -95,61 +95,61 @@
     },
     "keybindings": [
       {
-        "command": "CodeSecGPT.generateCode",
+        "command": "KPMG-Sec.generateCode",
         "key": "ctrl+shift+a",
         "mac": "cmd+shift+a",
         "when": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.addTests",
+        "command": "KPMG-Sec.addTests",
         "key": "ctrl+k ctrl+shift+1",
         "mac": "cmd+k cmd+shift+1",
         "when": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.findProblems",
+        "command": "KPMG-Sec.findVuln",
         "key": "ctrl+k ctrl+shift+2",
         "mac": "cmd+k cmd+shift+2",
         "when": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.optimize",
+        "command": "KPMG-Sec.optimize",
         "key": "ctrl+k ctrl+shift+3",
         "mac": "cmd+k cmd+shift+3",
         "when": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.explain",
+        "command": "KPMG-Sec.explain",
         "key": "ctrl+k ctrl+shift+4",
         "mac": "cmd+k cmd+shift+4",
         "when": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.addComments",
+        "command": "KPMG-Sec.addComments",
         "key": "ctrl+k ctrl+shift+5",
         "mac": "cmd+k cmd+shift+5",
         "when": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.completeCode",
+        "command": "KPMG-Sec.completeCode",
         "key": "ctrl+k ctrl+shift+6",
         "mac": "cmd+k cmd+shift+6",
         "when": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.adhoc",
+        "command": "KPMG-Sec.adhoc",
         "key": "ctrl+k ctrl+shift+7",
         "mac": "cmd+k cmd+shift+7",
         "when": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.customPrompt1",
+        "command": "KPMG-Sec.customPrompt1",
         "key": "ctrl+k ctrl+shift+8",
         "mac": "cmd+k cmd+shift+8",
         "when": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.customPrompt2",
+        "command": "KPMG-Sec.customPrompt2",
         "key": "ctrl+k ctrl+shift+9",
         "mac": "cmd+k cmd+shift+9",
         "when": "editorHasSelection"
@@ -157,92 +157,92 @@
     ],
     "commands": [
       {
-        "command": "CodeSecGPT.freeText",
-        "title": "CodeSecGPT: Ask anything"
+        "command": "KPMG-Sec.freeText",
+        "title": "KPMG-Sec: Ask anything"
       },
       {
-        "command": "CodeSecGPT.clearSession",
-        "title": "CodeSecGPT: Reset session"
+        "command": "KPMG-Sec.clearSession",
+        "title": "KPMG-Sec: Reset session"
       },
       {
-        "command": "CodeSecGPT.generateCode",
-        "title": "CodeSecGPT-Codex: Generate code",
+        "command": "KPMG-Sec.generateCode",
+        "title": "KPMG-Sec-Codex: Generate code",
         "enablement": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.addTests",
-        "title": "CodeSecGPT: Add tests",
+        "command": "KPMG-Sec.addTests",
+        "title": "KPMG-Sec: Add tests",
         "enablement": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.findProblems",
-        "title": "CodeSecGPT: Find bugs",
+        "command": "KPMG-Sec.findVuln",
+        "title": "KPMG-Sec: Find vulnerabilities",
         "enablement": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.optimize",
-        "title": "CodeSecGPT: Optimize",
+        "command": "KPMG-Sec.optimize",
+        "title": "KPMG-Sec: Optimize",
         "enablement": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.explain",
-        "title": "CodeSecGPT: Explain",
+        "command": "KPMG-Sec.explain",
+        "title": "KPMG-Sec: Explain",
         "enablement": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.addComments",
-        "title": "CodeSecGPT: Add comments",
+        "command": "KPMG-Sec.addComments",
+        "title": "KPMG-Sec: Add comments",
         "enablement": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.completeCode",
-        "title": "CodeSecGPT: Complete code",
+        "command": "KPMG-Sec.completeCode",
+        "title": "KPMG-Sec: Complete code",
         "enablement": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.adhoc",
-        "title": "CodeSecGPT: Ad-hoc prompt",
+        "command": "KPMG-Sec.adhoc",
+        "title": "KPMG-Sec: Ad-hoc prompt",
         "enablement": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.customPrompt1",
-        "title": "CodeSecGPT: Custom prompt 1",
+        "command": "KPMG-Sec.customPrompt1",
+        "title": "KPMG-Sec: Custom prompt 1",
         "enablement": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.customPrompt2",
-        "title": "CodeSecGPT: Custom prompt 2",
+        "command": "KPMG-Sec.customPrompt2",
+        "title": "KPMG-Sec: Custom prompt 2",
         "enablement": "editorHasSelection"
       },
       {
-        "command": "CodeSecGPT.clearConversation",
-        "title": "CodeSecGPT: Clear conversation"
+        "command": "KPMG-Sec.clearConversation",
+        "title": "KPMG-Sec: Clear conversation"
       },
       {
-        "command": "CodeSecGPT.exportConversation",
-        "title": "CodeSecGPT: Export conversation"
+        "command": "KPMG-Sec.exportConversation",
+        "title": "KPMG-Sec: Export conversation"
       }
     ],
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "CodeSecGPT-view-container",
-          "title": "CodeSecGPT",
-          "icon": "images/openai-logo.svg"
+          "id": "KPMG-Sec-view-container",
+          "title": "KPMG-Sec",
+          "icon": "images/KPMG.svg"
         }
       ]
     },
     "views": {
-      "CodeSecGPT-view-container": [
+      "KPMG-Sec-view-container": [
         {
           "type": "webview",
-          "id": "CodeSecGPT.view",
+          "id": "KPMG-Sec.view",
           "name": "Conversation window"
         }
       ]
     },
     "configuration": {
-      "title": "CodeSecGPT",
+      "title": "KPMG-Sec",
       "properties": {
         "chatgpt.method": {
           "type": "string",
@@ -311,16 +311,16 @@
           "description": "Enable the prompt prefix used for adding tests for the selected code in the context menu",
           "order": 9
         },
-        "chatgpt.promptPrefix.findProblems": {
+        "chatgpt.promptPrefix.findVuln": {
           "type": "string",
-          "default": "Find problems with the following code",
-          "description": "The prompt prefix used for finding problems for the selected code",
+          "default": "As a cybersecurity expert.Explain and find vulnerabilities with the following code and rewrite the code",
+          "description": "The prompt prefix used for finding vulnerabilities and bugs for the selected code",
           "order": 10
         },
-        "chatgpt.promptPrefix.findProblems-enabled": {
+        "chatgpt.promptPrefix.findVuln-enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Enable the prompt prefix used for finding problems for the selected code in the context menu",
+          "description": "Enable the prompt prefix used for finding vulnerabilities for the selected code in the context menu",
           "order": 11
         },
         "chatgpt.promptPrefix.optimize": {
@@ -480,7 +480,7 @@
         "chatgpt.response.showNotification": {
           "type": "boolean",
           "default": false,
-          "description": "Choose whether you'd like to receive a notification when CodeSecGPT bot responds to your query.",
+          "description": "Choose whether you'd like to receive a notification when KPMG-Sec bot responds to your query.",
           "order": 37
         },
         "chatgpt.response.autoScroll": {
