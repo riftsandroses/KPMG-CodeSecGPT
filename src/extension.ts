@@ -1,10 +1,16 @@
 import * as vscode from "vscode";
+import * as fs from 'fs';
 import ChatGptViewProvider from './chatgpt-view-provider';
 
 const menuCommands = ["findVuln", "completeCode", "customPrompt1", "adhoc"];
 
 export async function activate(context: vscode.ExtensionContext) {
 	let adhocCommandPrefix: string = context.globalState.get("chatgpt-adhoc-prompt") || '';
+
+	const logFilePath = `${context.extensionPath}/extension.log`;
+	const appendLog = (logMessage: string) => {
+		fs.appendFileSync(logFilePath, `${new Date().toISOString()} - ${logMessage}\n`);
+	};
 
 	const provider = new ChatGptViewProvider(context);
 
@@ -107,6 +113,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		}
 
 		const selection = editor.document.getText(editor.selection);
+		appendLog(`Selected text: ${selection}`);
 		let dismissed = false;
 		if (selection) {
 			await vscode.window
