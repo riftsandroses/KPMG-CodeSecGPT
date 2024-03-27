@@ -1,20 +1,20 @@
-# CodeSecGPT - Enterprise (Visual Studio Code Extension)
+# KPMG-CodeSecGPT (Visual Studio Code Extension)
 
 **Secure your code with the power of OpenAI's GPT-3.5-Turbo!**
 
-CodeSecGPT-Enterprise is a VSCode extension that leverages the advanced capabilities of OpenAI's GPT-3.5-Turbo language model to help you identify and fix security vulnerabilities in your code. With its intuitive interface and seamless integration, CodeSecGPT-Enterprise empowers you to write more secure code and streamline your development workflow.
+KPMG-CodeSecGPT is a VSCode extension that leverages the advanced capabilities of OpenAI's GPT-3.5-Turbo language model to help you identify and fix security vulnerabilities in your code. With its intuitive interface and seamless integration, KPMG-CodeSecGPT empowers you to write more secure code and streamline your development workflow.
 
 ## Features
 
-* **AI-powered vulnerability detection:** CodeSecGPT-Enterprise analyzes your code using GPT-3.5-Turbo, pinpointing potential security issues based on its vast knowledge of code patterns and common vulnerabilities.
+* **AI-powered vulnerability detection:** KPMG-CodeSecGPT analyzes your code using GPT-3.5-Turbo, pinpointing potential security issues based on its vast knowledge of code patterns and common vulnerabilities.
   
-* **Actionable suggestions:** CodeSecGPT-Enterprise doesn't just highlight vulnerabilities; it provides tailored suggestions for fixing them, guiding you towards more secure coding practices.
+* **Actionable suggestions:** KPMG-CodeSecGPT doesn't just highlight vulnerabilities; it provides tailored suggestions for fixing them, guiding you towards more secure coding practices.
   
-* **Seamless integration:** CodeSecGPT-Enterprise works directly within your VSCode environment, offering real-time feedback as you code.
+* **Seamless integration:** KPMG-CodeSecGPT works directly within your VSCode environment, offering real-time feedback as you code.
   
 * **Customization options:** You can fine-tune the extension's behavior to match your specific coding style and preferences.
   
-* **Change logging:** All code modifications suggested by CodeSecGPT-Enterprise and applied by the user are automatically logged for traceability and audit purposes.
+* **Change logging:** All code modifications suggested by KPMG-CodeSecGPT and applied by the user are automatically logged for traceability and audit purposes.
 
 ## Requirements
 
@@ -34,13 +34,13 @@ CodeSecGPT-Enterprise is a VSCode extension that leverages the advanced capabili
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/riftsandroses/CodeSecGPT-Enterprise
+   git clone https://github.com/riftsandroses/KPMG-CodeSecGPT
    ```
 
 2. **Navigate to the project directory:**
 
    ```bash
-   cd CodeSecGPT-Enterprise
+   cd KPMG-CodeSecGPT
    ```
 
 3. **Install dependencies:**
