@@ -52,7 +52,7 @@ KPMG-CodeSecGPT is a VSCode extension that leverages the advanced capabilities o
 4. **Build the VSIX package:**
 
    ```bash
-   tsc -p . && vsce package
+   vsce package
    ```
 
    This will create a VSIX file in the `dist` folder.
